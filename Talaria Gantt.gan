@@ -9,7 +9,7 @@
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
         <option id="filter.inProgressTodayTasks" value="false"/>
-        <option id="color.recent"><![CDATA[#00cc00 #cc00cc #009900 #9999ff]]></option>
+        <option id="color.recent"><![CDATA[#500000 #cc0066 #00cc00 #cc00cc #009900 #9999ff]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="210" order="0"/>
@@ -67,8 +67,8 @@
         <task id="24" uid="3678b59f45eb48ee92a4d41c9ee00baa" name="Demo 2" meeting="true" start="2025-02-26" duration="0" complete="0" expand="true"/>
         <task id="25" uid="b82f0c8dc9a2476995a533c2e298d06e" name="Final Demo" meeting="true" start="2025-04-09" duration="0" complete="0" expand="true"/>
         <task id="26" uid="504c924757cc4e7f810d371297e71741" name="CAD base frame" meeting="false" start="2025-01-15" duration="2" complete="100" expand="true"/>
-        <task id="27" uid="cedb21d41d8c40c693a07eaf9f35e6c9" name="CAD Mail Attachments" meeting="false" start="2025-01-16" duration="4" complete="80" expand="true"/>
-        <task id="28" uid="47770731b7e24e8ba58679a29152c0d2" name="Full CAD Assembly" meeting="false" start="2025-01-24" duration="2" complete="0" expand="true"/>
+        <task id="27" uid="cedb21d41d8c40c693a07eaf9f35e6c9" name="CAD Mail Attachments" meeting="false" start="2025-01-16" duration="4" complete="100" expand="true"/>
+        <task id="28" uid="47770731b7e24e8ba58679a29152c0d2" name="Full CAD Assembly" meeting="false" start="2025-01-24" duration="2" complete="60" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
