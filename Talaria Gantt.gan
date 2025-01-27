@@ -42,18 +42,18 @@
         <task id="1" uid="b1708f8a49034f28a2ac4d79224df55f" name="3D print Electronic Covers" meeting="false" start="2025-01-29" duration="3" complete="0" expand="true"/>
         <task id="29" uid="5cffe2a2f18d4b539aef83a32eac0f47" name="3D Print Micrcontroller Holders" meeting="false" start="2025-01-20" duration="3" complete="0" expand="true"/>
         <task id="38" uid="b3d9e99a921d4b95b376ddce7f2c0bf7" name="&quot;Sender&quot; Controls" color="#00cc00" meeting="false" start="2025-01-15" duration="3" complete="100" expand="true"/>
-        <task id="39" uid="924aed72ac7446e6bb03753038655c73" name="&quot;Recipient&quot; Controls" color="#00cc00" meeting="false" start="2025-01-20" duration="4" complete="0" expand="true"/>
-        <task id="40" uid="0f206943e9334d3bab3630c225712c8f" name="UI Navigation System" color="#00cc00" meeting="false" start="2025-01-24" duration="4" complete="0" expand="true"/>
+        <task id="39" uid="924aed72ac7446e6bb03753038655c73" name="&quot;Recipient&quot; Controls" color="#00cc00" meeting="false" start="2025-01-20" duration="4" complete="100" expand="true"/>
+        <task id="40" uid="0f206943e9334d3bab3630c225712c8f" name="UI Navigation System" color="#00cc00" meeting="false" start="2025-01-24" duration="4" complete="100" expand="true"/>
         <task id="2" uid="05abd37113b74fe08549ebcc5e987b8b" name="Assemble chassis" meeting="false" start="2025-02-03" duration="5" complete="0" expand="true"/>
         <task id="3" uid="3df214b60704423e94145227a57b3b3f" name="Assemble actuators" meeting="false" start="2025-02-10" duration="3" complete="0" expand="true"/>
         <task id="4" uid="1d0de7af88df412d8354d485c432ea16" name="Wire microcontroller and battery" meeting="false" start="2025-02-13" duration="2" complete="0" expand="true"/>
         <task id="6" uid="9a218a3e71d144eb89a4ca68468e1c5f" name="Wire sensors" meeting="false" start="2025-02-17" duration="2" complete="0" expand="true"/>
         <task id="30" uid="78069a8bf46c47de9dcfa14b7f44742c" name="Wire control panel" meeting="false" start="2025-02-19" duration="3" complete="0" expand="true"/>
         <task id="7" uid="2c5eab0cc576476e97a108b7b55af7fa" name="Implement basic control loop" color="#00cc00" meeting="false" start="2025-02-06" duration="3" complete="0" expand="true"/>
-        <task id="8" uid="288e068d9fda4c35a3553ba540c1c2aa" name="UI Navigation System" color="#00cc00" meeting="false" start="2025-01-31" duration="4" complete="0" expand="true"/>
+        <task id="8" uid="288e068d9fda4c35a3553ba540c1c2aa" name="Implement server- and client-side controls" color="#00cc00" meeting="false" start="2025-01-31" duration="4" complete="30" expand="true"/>
         <task id="9" uid="920601dfd6fa42bd89a0b287fd54d96e" name="Implement Obstacle avoidance" color="#00cc00" meeting="false" start="2025-02-11" duration="10" complete="0" expand="true"/>
-        <task id="14" uid="652b33cd610b4a81aed95fbf4bab8b63" name="Implement path finding" color="#00cc00" meeting="false" start="2025-03-03" duration="8" complete="0" expand="true"/>
-        <task id="15" uid="609a1d70b4e5430190413e55a26667a7" name="Implemet floor map reader" color="#00cc00" meeting="false" start="2025-02-25" duration="4" complete="0" expand="true"/>
+        <task id="14" uid="652b33cd610b4a81aed95fbf4bab8b63" name="Implement path finding" color="#00cc00" meeting="false" start="2025-03-03" duration="8" complete="80" expand="true"/>
+        <task id="15" uid="609a1d70b4e5430190413e55a26667a7" name="Implemet floor map reader" color="#00cc00" meeting="false" start="2025-02-25" duration="4" complete="100" expand="true"/>
         <task id="35" uid="70a3f06a821c4ad99eecf365b3c15ecc" name="Test static obstacle avoidance" color="#00cc00" meeting="false" start="2025-03-18" duration="5" complete="0" expand="true"/>
         <task id="18" uid="32dadcbf4fde43a787b4f3b0d2c69e46" name="Test touchscreen" meeting="false" start="2025-03-06" duration="2" complete="0" expand="true"/>
         <task id="31" uid="7a823767394f4249b587b62cdf636357" name="Test battery life" meeting="false" start="2025-02-24" duration="3" complete="0" expand="true"/>
