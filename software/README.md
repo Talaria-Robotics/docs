@@ -1,4 +1,4 @@
-Talaria’s autonomous mail delivery robot is built in two halves: the Navigator and Control Panel. The Navigator module is composed of a Raspberry Pi, the motor controller, and all navigation sensors such as LIDAR and motor encoders. Its primary purpose is to accept control commands from the Control Panel and navigate the SCUTTLE on the delivery route. The Control Panel module consists of another Raspberry Pi and a touchscreen, which serves as the interface for users to interact with the delivery system, primarily by planning and accepting deliveries.
+Talaria's autonomous mail delivery robot is built in two halves: the Navigator and Control Panel. The Navigator module is composed of a Raspberry Pi, the motor controller, and all navigation sensors such as LIDAR and motor encoders. Its primary purpose is to accept control commands from the Control Panel and navigate the SCUTTLE on the delivery route. The Control Panel module consists of another Raspberry Pi and a touchscreen, which serves as the interface for users to interact with the delivery system, primarily by planning and accepting deliveries.
 
 **In short:**
 
@@ -37,11 +37,82 @@ abstract interface class NavigatorApi {
 ```
 
 `getPossibleRouteInfo()` returns a structure that includes the available rooms and bins:
-```json
 
+```json
+{
+  "id": "someGUID",
+  "name": "Example Floor",
+  "rooms": [
+    {
+      "id": "home",
+      "name": "Mail Room"
+    },
+    {
+      "id": "room1",
+      "name": "Room 101"
+    },
+    {
+      "id": "room2",
+      "name": "Room 102"
+    },
+  ],
+  "bins": [
+    {
+      "number": 1,
+      "name": "Letter Slot 1"
+    },
+    {
+      "number": 2,
+      "name": "Letter Slot 2"
+    },
+    {
+      "number": 5,
+      "name": "Package Areas"
+    },
+  ]
+}
 ```
 
-## Floor Maps
+`listenToRoute()` streams a sequence of events of any of the following formats. Every event type has two properties: `$type` and `orderNumber`. The type property contains the name of the event type and is required so the client and deserialize the data into the proper structure. The `orderNumber` is an optional property that may be used by the client to process events correctly if they arrive out-of-order.
+
+**In-transit:** The robot is on its way to the specified room.
+```json
+{
+  "$type": "InTransit",
+  "orderNumber": 1,
+  "room": {
+    "id": "room1",
+    "name": "Room 1"
+  }
+}
+```
+
+**Arrived at stop:** The robot is currently waiting at the stop for the recipient to remove their mail from the specified bin.
+```json
+{
+  "$type": "ArrivedAtStop",
+  "orderNumber": 2,
+  "room": {
+    "id": "room1",
+    "name": "Room 1"
+  },
+  "bin": {
+    "number": 2,
+    "name": "Letter Slot 1"
+  }
+}
+```
+
+**Return home:** The robot is currently waiting at the stop for the recipient to remove their mail from the specified bin.
+```json
+{
+  "orderNumber": 3,
+  "$type": "ReturnHome"
+}
+```
+
+
+## Floor maps
 Floor maps define the layout of a mail floor, which is used for path planning and some static obstacle avoidance. They are stored in a custom file format that encodes paths between points of delivery, referred to as stops.
 
 Below is an example of a floor map:
