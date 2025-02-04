@@ -50,7 +50,7 @@
         <task id="6" uid="9a218a3e71d144eb89a4ca68468e1c5f" name="Wire sensors" meeting="false" start="2025-02-17" duration="2" complete="0" expand="true"/>
         <task id="30" uid="78069a8bf46c47de9dcfa14b7f44742c" name="Wire control panel" meeting="false" start="2025-02-19" duration="3" complete="0" expand="true"/>
         <task id="7" uid="2c5eab0cc576476e97a108b7b55af7fa" name="Implement basic control loop" color="#00cc00" meeting="false" start="2025-02-06" duration="3" complete="0" expand="true"/>
-        <task id="8" uid="288e068d9fda4c35a3553ba540c1c2aa" name="Implement server- and client-side controls" color="#00cc00" meeting="false" start="2025-01-31" duration="4" complete="30" expand="true"/>
+        <task id="8" uid="288e068d9fda4c35a3553ba540c1c2aa" name="Implement server- and client-side controls" color="#00cc00" meeting="false" start="2025-01-31" duration="4" complete="50" expand="true"/>
         <task id="9" uid="920601dfd6fa42bd89a0b287fd54d96e" name="Implement Obstacle avoidance" color="#00cc00" meeting="false" start="2025-02-11" duration="10" complete="0" expand="true"/>
         <task id="14" uid="652b33cd610b4a81aed95fbf4bab8b63" name="Implement path finding" color="#00cc00" meeting="false" start="2025-03-03" duration="8" complete="80" expand="true"/>
         <task id="15" uid="609a1d70b4e5430190413e55a26667a7" name="Implemet floor map reader" color="#00cc00" meeting="false" start="2025-02-25" duration="4" complete="100" expand="true"/>
