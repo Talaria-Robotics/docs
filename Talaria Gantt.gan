@@ -40,7 +40,7 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="1" uid="b1708f8a49034f28a2ac4d79224df55f" name="3D print Electronic Covers" meeting="false" start="2025-01-29" duration="3" complete="0" expand="true"/>
-        <task id="29" uid="5cffe2a2f18d4b539aef83a32eac0f47" name="3D Print Micrcontroller Holders" meeting="false" start="2025-01-20" duration="3" complete="0" expand="true"/>
+        <task id="29" uid="5cffe2a2f18d4b539aef83a32eac0f47" name="3D Print Micrcontroller Holders" meeting="false" start="2025-01-20" duration="3" complete="20" expand="true"/>
         <task id="38" uid="b3d9e99a921d4b95b376ddce7f2c0bf7" name="&quot;Sender&quot; Controls" color="#00cc00" meeting="false" start="2025-01-15" duration="3" complete="100" expand="true"/>
         <task id="39" uid="924aed72ac7446e6bb03753038655c73" name="&quot;Recipient&quot; Controls" color="#00cc00" meeting="false" start="2025-01-20" duration="4" complete="100" expand="true"/>
         <task id="40" uid="0f206943e9334d3bab3630c225712c8f" name="UI Navigation System" color="#00cc00" meeting="false" start="2025-01-24" duration="4" complete="100" expand="true"/>
@@ -68,7 +68,7 @@
         <task id="25" uid="b82f0c8dc9a2476995a533c2e298d06e" name="Final Demo" meeting="true" start="2025-04-09" duration="0" complete="0" expand="true"/>
         <task id="26" uid="504c924757cc4e7f810d371297e71741" name="CAD base frame" meeting="false" start="2025-01-15" duration="2" complete="100" expand="true"/>
         <task id="27" uid="cedb21d41d8c40c693a07eaf9f35e6c9" name="CAD Mail Attachments" meeting="false" start="2025-01-16" duration="4" complete="100" expand="true"/>
-        <task id="28" uid="47770731b7e24e8ba58679a29152c0d2" name="Full CAD Assembly" meeting="false" start="2025-01-24" duration="2" complete="60" expand="true"/>
+        <task id="28" uid="47770731b7e24e8ba58679a29152c0d2" name="Full CAD Assembly" meeting="false" start="2025-01-24" duration="2" complete="100" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
