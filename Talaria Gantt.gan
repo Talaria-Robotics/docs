@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Talaria" company="" webLink="http://" view-date="2024-12-29" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.3.3312" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Talaria" company="" webLink="http://" view-date="2025-01-12" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.3.3312" locale="en_US">
     <description/>
     <view zooming-state="default:6" id="gantt-chart">
         <field id="tpd3" name="Name" width="200" order="0"/>
@@ -9,14 +9,14 @@
         <option id="filter.dueTodayTasks" value="false"/>
         <option id="filter.overdueTasks" value="false"/>
         <option id="filter.inProgressTodayTasks" value="false"/>
-        <option id="color.recent"><![CDATA[#500000 #cc0066 #00cc00 #cc00cc #009900 #9999ff]]></option>
+        <option id="color.recent"><![CDATA[#500000 #ff0000 #666666 #cc0066 #00cc00 #cc00cc #009900 #9999ff]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="210" order="0"/>
         <field id="1" name="Default role" width="86" order="1"/>
     </view>
     <!-- -->
-    <calendars>
+    <calendars base-id="none">
         <day-types>
             <day-type id="0"/>
             <day-type id="1"/>
@@ -25,6 +25,7 @@
             <overriden-day-types/>
             <days/>
         </day-types>
+        <date year="2025" month="2" date="16" type="HOLIDAY" color="#500000"/>
     </calendars>
     <tasks empty-milestones="true">
         <taskproperties>
@@ -39,19 +40,19 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="1" uid="b1708f8a49034f28a2ac4d79224df55f" name="3D print Electronic Covers" meeting="false" start="2025-01-29" duration="3" complete="0" expand="true"/>
-        <task id="29" uid="5cffe2a2f18d4b539aef83a32eac0f47" name="3D Print Micrcontroller Holders" meeting="false" start="2025-01-20" duration="3" complete="20" expand="true"/>
+        <task id="1" uid="b1708f8a49034f28a2ac4d79224df55f" name="3D print Electronic Covers" meeting="false" start="2025-01-29" duration="3" complete="50" expand="true"/>
+        <task id="29" uid="5cffe2a2f18d4b539aef83a32eac0f47" name="3D Print Micrcontroller Holders" meeting="false" start="2025-01-20" duration="3" complete="70" expand="true"/>
         <task id="38" uid="b3d9e99a921d4b95b376ddce7f2c0bf7" name="&quot;Sender&quot; Controls" color="#00cc00" meeting="false" start="2025-01-15" duration="3" complete="100" expand="true"/>
         <task id="39" uid="924aed72ac7446e6bb03753038655c73" name="&quot;Recipient&quot; Controls" color="#00cc00" meeting="false" start="2025-01-20" duration="4" complete="100" expand="true"/>
         <task id="40" uid="0f206943e9334d3bab3630c225712c8f" name="UI Navigation System" color="#00cc00" meeting="false" start="2025-01-24" duration="4" complete="100" expand="true"/>
-        <task id="2" uid="05abd37113b74fe08549ebcc5e987b8b" name="Assemble chassis" meeting="false" start="2025-02-03" duration="5" complete="0" expand="true"/>
-        <task id="3" uid="3df214b60704423e94145227a57b3b3f" name="Assemble actuators" meeting="false" start="2025-02-10" duration="3" complete="0" expand="true"/>
+        <task id="2" uid="05abd37113b74fe08549ebcc5e987b8b" name="Assemble chassis" meeting="false" start="2025-02-03" duration="5" complete="90" expand="true"/>
+        <task id="3" uid="3df214b60704423e94145227a57b3b3f" name="Assemble actuators" meeting="false" start="2025-02-10" duration="3" complete="70" expand="true"/>
         <task id="4" uid="1d0de7af88df412d8354d485c432ea16" name="Wire microcontroller and battery" meeting="false" start="2025-02-13" duration="2" complete="0" expand="true"/>
         <task id="6" uid="9a218a3e71d144eb89a4ca68468e1c5f" name="Wire sensors" meeting="false" start="2025-02-17" duration="2" complete="0" expand="true"/>
         <task id="30" uid="78069a8bf46c47de9dcfa14b7f44742c" name="Wire control panel" meeting="false" start="2025-02-19" duration="3" complete="0" expand="true"/>
         <task id="7" uid="2c5eab0cc576476e97a108b7b55af7fa" name="Implement basic control loop" color="#00cc00" meeting="false" start="2025-02-06" duration="3" complete="0" expand="true"/>
         <task id="8" uid="288e068d9fda4c35a3553ba540c1c2aa" name="Implement server- and client-side controls" color="#00cc00" meeting="false" start="2025-01-31" duration="4" complete="50" expand="true"/>
-        <task id="9" uid="920601dfd6fa42bd89a0b287fd54d96e" name="Implement Obstacle avoidance" color="#00cc00" meeting="false" start="2025-02-11" duration="10" complete="0" expand="true"/>
+        <task id="9" uid="920601dfd6fa42bd89a0b287fd54d96e" name="Implement Obstacle avoidance" color="#00cc00" meeting="false" start="2025-02-11" duration="10" complete="30" expand="true"/>
         <task id="14" uid="652b33cd610b4a81aed95fbf4bab8b63" name="Implement path finding" color="#00cc00" meeting="false" start="2025-03-03" duration="8" complete="80" expand="true"/>
         <task id="15" uid="609a1d70b4e5430190413e55a26667a7" name="Implemet floor map reader" color="#00cc00" meeting="false" start="2025-02-25" duration="4" complete="100" expand="true"/>
         <task id="35" uid="70a3f06a821c4ad99eecf365b3c15ecc" name="Test static obstacle avoidance" color="#00cc00" meeting="false" start="2025-03-18" duration="5" complete="0" expand="true"/>
@@ -62,6 +63,7 @@
         <task id="33" uid="2698a5bbf7e34b10b01e205a6a447707" name="Test &quot;Recipient&quot; Controls" color="#00cc00" meeting="false" start="2025-03-13" duration="3" complete="0" expand="true"/>
         <task id="36" uid="e20e378d524b46fb846455cff5bd0e8c" name="Test &quot;Sender&quot; Controls" meeting="false" start="2025-03-10" duration="3" complete="0" expand="true"/>
         <task id="34" uid="45f8e3d7548f43e9b9e88ef1a2769395" name="Test dynamic obstacle avoidance" color="#00cc00" meeting="false" start="2025-03-25" duration="5" complete="0" expand="true"/>
+        <task id="41" uid="cb3f9138e4394ca6a4d85405aef70ef5" name="Demo 3" meeting="true" start="2025-03-26" duration="0" complete="0" expand="true"/>
         <task id="22" uid="0efcec0f0f0e4bed8e01b6d44b760c2e" name="Test package stabilization" meeting="false" start="2025-03-04" duration="5" complete="0" expand="true"/>
         <task id="23" uid="c93cd9684f034ef4848cb116976475b5" name="Demo 1" meeting="true" start="2025-02-05" duration="0" complete="0" expand="true"/>
         <task id="24" uid="3678b59f45eb48ee92a4d41c9ee00baa" name="Demo 2" meeting="true" start="2025-02-26" duration="0" complete="0" expand="true"/>
