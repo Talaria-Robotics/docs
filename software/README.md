@@ -2,10 +2,10 @@ Talaria's autonomous mail delivery robot is built in two halves: the Navigator a
 
 **In short:**
 
-* The Navigator is the brains of the SCUTTLE platform including all navigation sensors
-    * The Navigator API is the surface used for high-level navigation commands
+* The [Navigator](#navigator) is the brains of the SCUTTLE platform including all navigation sensors
+    * The Navigator [API](#api) is the surface used for high-level navigation commands
     * The Navigator Controller is the control loop that uses sensors and motors to move between waypoints
-* The Control Panel is the primary interface between the user and the robot
+* The [Control Panel](#control-panel) is the primary interface between the user and the robot
 
 ***Figure 1:** High-level sequence of system events.*
 ![](./user-flow.png)
@@ -15,14 +15,14 @@ Talaria's autonomous mail delivery robot is built in two halves: the Navigator a
 
 # Navigator
 
-* Receives commands from Control Panel
+* Receives commands from [Control Panel](#control-panel)
 * Stores floor map, rooms, and available bins
 * Determines most efficient order of stops
 * Plans ideal driving route
 * Controls motors while avoiding obstacles using feedback from LIDAR and encoders
 
 ## API
-The Navigator API acts as a layer between the Control Panel and the robot control loop. The interface itself is agnostic of any particular protocol, but for the Talaria mail system it is implemented using HTTP via an Ethernet cable between the two Raspberry Pis. In Dart, the interface looks like this:
+The Navigator API acts as a layer between the [Control Panel](#control-panel) and the robot control loop. The interface itself is agnostic of any particular protocol, but for Talaria PRESTON it is implemented using HTTP via an Ethernet cable between the two Raspberry Pis (see [*Implementation*](#implementation)). In Dart, the interface looks like this:
 
 ```dart
 abstract interface class NavigatorApi {
@@ -167,12 +167,12 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 ![](example-floorplan-graph.png)
 
 # Control Panel
-* Sends commands to Navigator
+* Sends commands to [Navigator](#navigator)
 * Asks delivery person to specify which bins contain mail for which rooms
 * Shows a status message when bot is in transit
 * Allows recipients to tell the bot when they have finished retrieving their items
 
-In general, the Control Panel is designed to be very simple. The Navigator API is designed in such a way that the Control Panel needs almost no domain logic or state management. Any information it needs can be immediately retrieved from the API. For example, the [in-transit event](#route-events) includes a complete room object, rather than providing only the room ID and leaving it up to the Control Panel to resolve the ID to a name. 
+In general, the Control Panel is designed to be very simple. The [Navigator API](#api) is designed in such a way that the Control Panel needs almost no domain logic or state management. Any information it needs can be immediately retrieved from the API. For example, the [in-transit event](#route-events) includes a complete room object, rather than providing only the room ID and leaving it up to the Control Panel to resolve the ID to a name. 
 
 ## UI flow
 The Control Panel has four different screens that roughly correspond with the major events shown in *Figure 2*.
