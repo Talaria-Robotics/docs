@@ -36,6 +36,7 @@ abstract interface class NavigatorApi {
 }
 ```
 
+### Route info
 `getPossibleRouteInfo()` returns a structure that includes the available rooms and bins:
 
 ```json
@@ -73,6 +74,7 @@ abstract interface class NavigatorApi {
 }
 ```
 
+### Route events
 `listenToRoute()` streams a sequence of events from the Navigator of any of the following formats. Every event type has two properties: `$type` and `orderNumber`. The type property contains the name of the event type and is required so the client and deserialize the data into the proper structure. The `orderNumber` is an optional property that may be used by the client to process events correctly if they arrive out of order.
 
 **In-transit:** The robot is on its way to the specified room.
@@ -170,8 +172,10 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 * Shows a status message when bot is in transit
 * Allows recipients to tell the bot when they have finished retrieving their items
 
+In general, the Control Panel is designed to be very simple. The Navigator API is designed in such a way that the Control Panel needs almost no domain logic or state management. Any information it needs can be immediately retrieved from the API. For example, the [in-transit event](#route-events) includes a complete room object, rather than providing only the room ID and leaving it up to the Control Panel to resolve the ID to a name. 
+
 ## UI flow
-The Control Panel has $N$ different screens that roughly correspond with the major events shown in *Figure 2*.
+The Control Panel has four different screens that roughly correspond with the major events shown in *Figure 2*.
 
 1. **Home:** Landing page for when the bot first starts up.
 1. **Route planner:** Allows the sender to assign rooms to bins using data fetched via `getPossibleRouteInfo()`.
