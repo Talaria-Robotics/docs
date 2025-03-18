@@ -169,3 +169,23 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 * Asks delivery person to specify which bins contain mail for which rooms
 * Shows a status message when bot is in transit
 * Allows recipients to tell the bot when they have finished retrieving their items
+
+## UI flow
+The Control Panel has $N$ different screens that roughly correspond with the major events shown in *Figure 2*.
+
+1. **Home:** Landing page for when the bot first starts up.
+1. **Route planner:** Allows the sender to assign rooms to bins using data fetched via `getPossibleRouteInfo()`.
+1. **Route confirmation:** Prompts the sender to confirm the bin-room assignments.
+1. **Status:** Displays the current status of the delivery by streaming events from `listenToRoute()`.
+
+**In-transit:** Informs passersby that the robot is on its way to a room.
+
+![An example of the in-transit screen.](status-intransit.png)
+
+**Arrived at stop:** Informs the recipient which bins contain mail for them. Waits for confirmation before calling `deliveryComplete()`.
+
+![An example of the arrived-at-stop screen.](status-arrivedatstop.png)
+
+**Return home:** Informs passersby that the robot has completed its route and is returning to its home position.
+
+![An example of the return-home screen.](status-returnhome.png)
