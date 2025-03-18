@@ -73,7 +73,7 @@ abstract interface class NavigatorApi {
 }
 ```
 
-`listenToRoute()` streams a sequence of events of any of the following formats. Every event type has two properties: `$type` and `orderNumber`. The type property contains the name of the event type and is required so the client and deserialize the data into the proper structure. The `orderNumber` is an optional property that may be used by the client to process events correctly if they arrive out-of-order.
+`listenToRoute()` streams a sequence of events from the Navigator of any of the following formats. Every event type has two properties: `$type` and `orderNumber`. The type property contains the name of the event type and is required so the client and deserialize the data into the proper structure. The `orderNumber` is an optional property that may be used by the client to process events correctly if they arrive out of order.
 
 **In-transit:** The robot is on its way to the specified room.
 ```json
