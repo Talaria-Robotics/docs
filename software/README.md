@@ -166,6 +166,13 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 ***Figure 3:** Visualization of the graph defined in the example floor plan. Stops are shown in green and junctions in red.*
 ![](example-floorplan-graph.png)
 
+## Implementation
+In PRESTON, the API and Controller are implemented in Python across various modules. [`server.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/server.py) directly implements the [API](#api) as an HTTP server using [Sanic](https://sanic.dev/en/) for most requests, along with a UDP socket for sending [route events](#route-events). The Controller is implemented as a collection of modules that abstract away internal details, such as [PWM motor control](https://github.com/Talaria-Robotics/navigator/blob/main/src/motor.py) or [obstacle avoidance](https://github.com/Talaria-Robotics/navigator/blob/main/src/obstacle_avoidance.py).
+
+Additional Python scripts exist for internal testing and visualization. Most notably, the [`lidar_nodered.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/lidar_nodered.py) script sends data to a Node-RED flow running on the Navigator Pi that visualizes the following data:
+- LIDAR data as a point cloud representing nearby obstacles
+- Encoder readings for the left and right motors as angles within a circle
+
 # Control Panel
 * Sends commands to [Navigator](#navigator)
 * Asks delivery person to specify which bins contain mail for which rooms
