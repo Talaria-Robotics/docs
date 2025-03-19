@@ -22,7 +22,7 @@ Talaria's autonomous mail delivery robot is built in two halves: the Navigator a
 * Controls motors while avoiding obstacles using feedback from LIDAR and encoders
 
 ## API
-The Navigator API acts as a layer between the [Control Panel](#control-panel) and the robot control loop. The interface itself is agnostic of any particular protocol, but for Talaria PRESTON it is implemented using HTTP via an Ethernet cable between the two Raspberry Pis (see [*Implementation*](#implementation)). In Dart, the interface looks like this:
+The Navigator API acts as a layer between the [Control Panel](#control-panel) and the robot control loop. The interface itself is agnostic of any particular protocol, but Talaria's implementation uses HTTP via an Ethernet cable between the two Raspberry Pis (see [*Implementation*](#implementation)). In Dart, the interface looks like this:
 
 ```dart
 abstract interface class NavigatorApi {
@@ -167,7 +167,7 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 ![](example-floorplan-graph.png)
 
 ## Implementation
-In PRESTON, the API and Controller are implemented in Python across various modules. [`server.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/server.py) directly implements the [API](#api) as an HTTP server using [Sanic](https://sanic.dev/en/) for most requests, along with a UDP socket for sending [route events](#route-events). The Controller is implemented as a collection of modules that abstract away internal details, such as [PWM motor control](https://github.com/Talaria-Robotics/navigator/blob/main/src/motor.py) or [obstacle avoidance](https://github.com/Talaria-Robotics/navigator/blob/main/src/obstacle_avoidance.py).
+For Talaria Robotics' mail delivery system, the API and Controller are implemented in Python across various modules. [`server.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/server.py) directly implements the [API](#api) as an HTTP server using [Sanic](https://sanic.dev/en/) for most requests, along with a UDP socket for sending [route events](#route-events). The Controller is implemented as a collection of modules that abstract away internal details, such as [PWM motor control](https://github.com/Talaria-Robotics/navigator/blob/main/src/motor.py) or [obstacle avoidance](https://github.com/Talaria-Robotics/navigator/blob/main/src/obstacle_avoidance.py).
 
 Additional Python scripts exist for internal testing and visualization. Most notably, the [`lidar_nodered.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/lidar_nodered.py) script sends data to a Node-RED flow running on the Navigator Pi that visualizes the following data:
 - LIDAR data as a point cloud representing nearby obstacles
