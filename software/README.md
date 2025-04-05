@@ -166,8 +166,44 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 ***Figure 3:** Visualization of the graph defined in the example floor plan. Stops are shown in green and junctions in red.*
 ![](example-floorplan-graph.png)
 
+## Path planning
+The path planning system takes a desired route, computes the most efficient paths, and breaks it down into simple local moves.
+
+1. [Control Panel](#control-panel) sets the desired route via the `POST /route` endpoint.
+1. Navigator waits for a connection to its UDP socket, signaling that the Control Panel is ready to begin delivery.
+1. The home node is prepended and appended to the desired stops to ensure the robot always starts from and ends at home.
+1. Dijkstra's algorithm is used to determine the shortest path between each desired stop, using junctions as vias if necessary. This produces a list of nodes, where adjacent nodes in the list are directly connected to each other on the floorplan.
+1. Starting with the first node, the path connecting it to the next node is discretized using a linear approximation with segments as small as one inch. Paths that are composed of true line segments (unlike Beziers) can be optimized into a few big segments, rather than many small segments.
+1. An `InTransit` [event](#route-events) is sent to the Control Panel.
+1. The desired heading angle for each segment is computed using the tangent vector at the starting point.
+1. The robot subtracts its current position and heading from the desired position and heading to compute a correction.
+1. Using the width of the wheelbase and the diameter of the wheel sprockets, the heading and forward corrections can be converted into target angular displacements for the left and right wheels. Assuming ideal circumstances:
+
+    * Moving forward requires spinning both wheels in the same direction by the same amount. For Talaria's robot, the wheels spin 49.822° to move forward 1". Computing the target angular displacement is as simple as multiplying the distance in inches by 49.822.
+    * Point turns require spinning the wheels in opposite directions by the same absolute amount. For this prototype, the wheels need to spin 10.0544° to rotate the robot by 1°. The target angular displacement can be computed by multiplying the desired heading angle by this factor.
+    
+1. The primary drive loop begins by reading the current angular position *θ* of the motor shafts. Note that this angle must take into account any gear ratios between the motor shaft and the driven wheels. For this prototype, the ratio is 2, so the measured angles must be divided by 2.
+1. The current angle of each wheel is compared to the previous angle to compute *Δθ*. Without any conditioning, there will be a discontinuity every time the wheels cross 0°. If the wheel angles are checked frequently enough, it can be assumed that the wheels will never spin more than 180° between a single measurement. If *|Δθ|* is computed to be larger than 180, the following corrections are made:
+    
+    * If the current angle was greater than the previous angle, then `dTheta = currentAngle - (360.0 + previousAngle)`
+    * Otherwise, `dTheta = currentAngle + (360.0 - previousAngle)`
+
+1. *Δθ* is accumulated to determine the current angular displacement of each wheel for this move.
+1. The remaining angular displacement is computed by subtracting the current displacement from the target displacement. Attempting to stop the robot when this remainder is exactly zero would fail, since the wheels spin more than a few degrees each iteration. Instead, the loop checks if the previous remainder had a different sign than the current remainder. The robot cannot teleport, so its movements are always continuous even if the readings are not. By the intermediate value theorem, if the remainder changes signs, the robot must have passed the target and should stop where it is.
+1. The actual angular displacements are converted back to a forward distance and heading angle, which is used to keep track of the robot's actual position.
+1. This process is repeated for every node. When the current node is marked as a stop, the robot sends an `ArrivedAtStop` event and waits for confirmation before proceeding.
+
 ## Implementation
-For Talaria Robotics' mail delivery system, the API and Controller are implemented in Python across various modules. [`server.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/server.py) directly implements the [API](#api) as an HTTP server using [Sanic](https://sanic.dev/en/) for most requests, along with a UDP socket for sending [route events](#route-events). The Controller is implemented as a collection of modules that abstract away internal details, such as [PWM motor control](https://github.com/Talaria-Robotics/navigator/blob/main/src/motor.py) or [obstacle avoidance](https://github.com/Talaria-Robotics/navigator/blob/main/src/obstacle_avoidance.py).
+For Talaria Robotics' mail delivery system, the API and Controller are implemented in Python across various modules. [`server.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/server.py) directly implements the [API](#api) as an HTTP server using [Sanic](https://sanic.dev/en/) for most requests, along with a UDP socket for streaming [route events](#route-events).
+
+Name                   | Endpoint
+---------------------- | ------------------------------
+`getPossibleRouteInfo` | HTTP `GET /possibleRoute`
+`setRoute`             | HTTP `POST /route`
+`listenToRoute`        | Opens UDP socket on port 8076
+`deliveryCompleted`    | Sends message via UDP socket
+
+The Controller is implemented as a collection of modules that abstract away internal details, such as [PWM motor control](https://github.com/Talaria-Robotics/navigator/blob/main/src/motor.py) or [obstacle avoidance](https://github.com/Talaria-Robotics/navigator/blob/main/src/obstacle_avoidance.py).
 
 Additional Python scripts exist for internal testing and visualization. Most notably, the [`lidar_nodered.py`](https://github.com/Talaria-Robotics/navigator/blob/main/src/lidar_nodered.py) script sends data to a Node-RED flow running on the Navigator Pi that visualizes the following data:
 
