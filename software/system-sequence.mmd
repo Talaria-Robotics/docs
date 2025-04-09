@@ -1,0 +1,39 @@
+---
+config:
+    theme: neutral
+---
+sequenceDiagram
+    autonumber
+
+    participant ctl as Control Panel
+    box Navigator
+        participant navApi as Server
+        participant navCtl as Controller
+    end
+
+    ctl ->>+ navApi: Request list of available bins and rooms
+    navApi -->>- ctl: Available bins and rooms
+    
+    Note over ctl: Sender selects which bins<br/>contain mail for which rooms
+    ctl ->>+ navApi: Assign rooms to bins
+
+    Note over navApi: Plan delivery route<br/>using floorplan
+    navApi -->>- ctl: Route accepted
+    
+    ctl ->> navApi: Begin route
+    navApi ->> navCtl: Waypoints with coordinates
+    navApi ->> ctl: Update status: In-transit
+    Note over navCtl: Drive between waypoints<br/>while avoiding obstacles
+    
+    loop Each stop
+        navCtl ->> navApi: Stopped
+        navApi ->>+ ctl: Update status: Arrived at stop X
+        Note over ctl: Recipient X removes items<br/>and confirms delivery
+        ctl -->>- navApi: Continue route
+        navApi ->> navCtl: Continue to next stop
+        navApi ->> ctl: Update status: In-transit
+    end
+
+    navCtl ->> navApi: No more waypoints
+    navApi ->> ctl: Update status: Returning Home
+
