@@ -167,7 +167,7 @@ Paths are defined by the starting node ID, a right angle bracket, the ending nod
 ![](example-floorplan-graph.png)
 
 ## Path planning
-The path planning system takes a desired route, computes the most efficient paths, and breaks it down into simple local moves.
+The path planning system takes a desired route, computes the most efficient paths, and breaks it down into simple local moves. The navigation process relies heavily on odometry to determine its global pose (2D position & heading).
 
 1. [Control Panel](#control-panel) sets the desired route via the `POST /route` endpoint.
 1. Navigator waits for a connection to its UDP socket, signaling that the Control Panel is ready to begin delivery.
